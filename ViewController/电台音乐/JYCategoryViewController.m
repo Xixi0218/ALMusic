@@ -42,6 +42,11 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     _tagName = tagName;
     self.categoryVM.tagName = tagName;
+    [self.collectionView.mj_header beginRefreshing];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self.categoryVM refreshDataCompletionHandle:^(NSError *error) {
             [self.collectionView reloadData];
@@ -61,11 +66,6 @@ static NSString * const reuseIdentifier = @"Cell";
     }];
     
     [self.collectionView.mj_header beginRefreshing];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
     self.collectionView.backgroundColor = [UIColor clearColor];
 
 }

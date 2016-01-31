@@ -65,6 +65,8 @@
     self.view.backgroundColor = [UIColor clearColor];
     self.title = @"有声书";
     [Factory addMenuItemToVC:self];
+    [Factory addDownLoadItemToVC:self];
+    //[Factory addDownLoadItemToVC:self];
 }
 
 - (void)didReceiveMemoryWarning {

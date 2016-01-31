@@ -26,5 +26,5 @@
 
 
 @implementation MusicDetailTracksListModel
-
+MJCodingImplementation
 @end

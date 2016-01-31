@@ -15,7 +15,8 @@
 /** 向某个控制器上，添加返回按钮 */
 + (void)addBackItemToVC:(UIViewController *)vc;
 
-
+/** 下载列表按钮*/
++ (void)addDownLoadItemToVC:(UIViewController *)vc;
 @end
 
 

@@ -19,7 +19,10 @@
 -(void)getDataFromNetCompleteHandle:(CompletionHandle)completionHandle{
     self.dataTask = [NovelNetManager getCategoryContentsCompletionHandle:^(NovelModel *model, NSError *error) {
         NSMutableArray *muArray = [NSMutableArray arrayWithArray:model.categoryContents.list];
-        [muArray removeObjectAtIndex:0];
+        if (model) {
+            [muArray removeObjectAtIndex:0];
+        }
+        
         self.dataArr = [muArray copy];
         self.indexPicArr = model.focusImages.list;
         self.tagArr = model.tags.list;

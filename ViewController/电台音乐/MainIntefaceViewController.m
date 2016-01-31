@@ -45,6 +45,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [Factory addMenuItemToVC:self];
+    [Factory addDownLoadItemToVC:self];
     self.navigationController.navigationBar.barTintColor = [UIColor greenSeaColor];
     UIImageView * imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bg_loading"]];
     [self.view addSubview:imageView];

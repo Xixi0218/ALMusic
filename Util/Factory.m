@@ -7,7 +7,7 @@
 //
 
 #import "Factory.h"
-
+#import "DownLoadController.h"
 @implementation Factory
 
 + (void)addMenuItemToVC:(UIViewController *)vc{
@@ -41,6 +41,22 @@
     vc.navigationItem.leftBarButtonItems = @[spaceItem,menuItem];
 }
 
+
++ (void)addDownLoadItemToVC:(UIViewController *)vc
+{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:[UIImage imageNamed:@"toolbar_playinglist_n_p"] forState:UIControlStateNormal];
+    [btn setImage:[UIImage imageNamed:@"toolbar_playinglist_h_p"] forState:UIControlStateHighlighted];
+    btn.frame = CGRectMake(0, 0, 45, 44);
+    [btn bk_addEventHandler:^(id sender) {
+        [vc.navigationController pushViewController:[DownLoadController defaultsVC] animated:YES];
+    } forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *menuItem=[[UIBarButtonItem alloc] initWithCustomView:btn];
+    //使用弹簧控件缩小菜单按钮和边缘距离
+    UIBarButtonItem *spaceItem=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    spaceItem.width = -16;
+    vc.navigationItem.rightBarButtonItems = @[spaceItem,menuItem];
+}
 
 
 @end

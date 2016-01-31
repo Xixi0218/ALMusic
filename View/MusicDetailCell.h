@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "TRImageView.h"
+@class MusicDetailCell;
+@protocol MusicDetailCellDelegate <NSObject>
+
+-(void)musicDetailCell:(MusicDetailCell *)musicDetailCell;
+
+@end
+
 @interface MusicDetailCell : UITableViewCell
 
 /** 音乐封面图 */
@@ -28,5 +35,7 @@
 @property(nonatomic,strong) UILabel *durationLb;
 /** 下载按钮 */
 @property(nonatomic,strong) UIButton *downloadBtn;
+
+@property (nonatomic,weak)id<MusicDetailCellDelegate> delegate;
 
 @end

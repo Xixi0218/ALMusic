@@ -168,7 +168,10 @@
         _downloadBtn = [UIButton buttonWithType:0];
         [_downloadBtn setBackgroundImage:[UIImage imageNamed:@"cell_download"] forState:0];
         [_downloadBtn bk_addEventHandler:^(id sender) {
-            DDLogVerbose(@"下载按钮被点击...");
+            if ([self.delegate respondsToSelector:@selector(musicDetailCell:)]) {
+                [self.delegate musicDetailCell:self];
+                _downloadBtn.selected = !_downloadBtn.selected;
+            }
         } forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_downloadBtn];
         [_downloadBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -181,7 +184,7 @@
 -(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        
+        self.downloadBtn.hidden = NO;
     }
     return self;
 }
